@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-        <img src="{{asset('dist/img/logo.png')}}" alt="Logo D|S" class="brand-image elevation-3"
+        <img src="{{asset('dist/img/Papelería.png')}}" alt="Logo D|S" class="brand-image elevation-3"
             style="opacity: .8;">
-        <span class="brand-text font-weight-light">V1</span>
+        <span class="brand-text font-weight-light">SPVS</span>
     </a>
 
     <!-- Sidebar -->
@@ -11,7 +11,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ Auth::user()->logo }}" class="img-circle elevation-2" alt="Imagen de usuario">
+                <img src="{{ Auth::user()->imagen }}" class="img-circle elevation-2" alt="Imagen de usuario">
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->nombre}}</a>
@@ -29,7 +29,7 @@
                         <i class="fas fa-tachometer-alt"></i>
                         <p>
                             Tablero
-                            <span class="right badge badge-danger">New</span>
+                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
@@ -38,35 +38,36 @@
                         <i class="fas fa-cash-register"></i>
                         <p>
                             Ventas
-                            <span class="right badge badge-danger">New</span>
+                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a href="{{route('precios')}}" class="nav-link {{!Route::is('precios') ?: 'active' }}">
                         <i class="fas fa-dollar-sign"></i>
                         <p>
                             Calcular precio
-                            <span class="right badge badge-danger">New</span>
+                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>
-                
+
                 <li class="nav-header">INVENTARIO</li>
 
                 <li class="nav-item">
                     <a href="{{route('categorias')}}" class="nav-link {{!Route::is('categorias') ?: 'active' }}">
-                        <i class="nav-icon fas fa-cubes"></i>
+                        <i class="fas fa-duotone fa-list nav-icon"></i>
                         <p>
                             Categorias
-                            <span class="badge badge-info right">2</span>
+                            {{-- <span class="badge badge-info right">2</span> --}}
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('productos')}}" class="nav-link {{!Route::is('productos') ?: 'active' }}">
-                        <i class="nav-icon fas fa-apple-alt"></i>
+                        {{-- <img src="{{asset('icons/cut-outline.svg')}}" class="nav-icon" style="color:white"> --}}
+                        <i class="fas fa-sharp fa-regular fa-paperclip nav-icon"></i>
                         <p>
                             Productos
                         </p>
@@ -85,7 +86,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('reportes')}}" class="nav-link {{!Route::is('reportes') ?: 'active'}}">
-                        <i class="nav-icon fas fa-coins"></i>
+                        <i class="fas fa-sharp fa-regular fa-clipboard nav-icon"></i>
                         <p>
                             Reportes
                         </p>

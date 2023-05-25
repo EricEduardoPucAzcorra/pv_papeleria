@@ -36,10 +36,10 @@
                     </thead>
                     <tbody>
                         @forelse ($productos as $item)
-                            
+
                             <tr>
                                 <td>
-                                    <img src="{{ $item->logo }}" width="36" height="36" class="" style="object-fit: cover; object-position: center" alt="{{ $item->nombre }}">
+                                    <img src="{{ $item->imagen }}" width="36" height="36" class="" style="object-fit: cover; object-position: center" alt="{{ $item->nombre }}">
                                 </td>
                                 <td>{{$item->sku}}</td>
                                 <td>{{$item->nombre}}</td>
