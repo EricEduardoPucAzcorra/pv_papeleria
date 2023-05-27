@@ -67,7 +67,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <button class="btn btn-danger btn-block" wire:click.prevent="$emit('limpiar')">
+                    <button class="btn btn btn-block" style="background-color: #ff5830; color: white" wire:click.prevent="$emit('limpiar')">
                         <i class="fas fa-trash"></i>
                         Cancelar Venta (F4)
                     </button>

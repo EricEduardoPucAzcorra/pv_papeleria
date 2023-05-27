@@ -44,14 +44,14 @@
                                 <td>{{$item->sku}}</td>
                                 <td>{{$item->nombre}}</td>
                                 <td>{{$item->costo}}</td>
-                                <td><span class="{{ $item->minimo_stock >= $item->stock ? 'bg-danger text-white p-1 rounded' : '' }} ">{{$item->stock}}</span></td>
+                                <td><span class="{{ $item->minimo_stock >= $item->stock ? 'p-1 rounded' : '' }} " style="background-color:  #ff5830; color: white ">{{$item->stock}}</span></td>
                                 <td class="">{{$item->minimo_stock}}</td>
                                 <td>{{$item->categoria->nombre}}</td>
                                 <td>
                                     <button class="btn btn-primary" wire:click.prevent="edit({{$item}})">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-danger" onclick="confimarEliminacion('{{$item->id}}')">
+                                    <button class="btn btn" style="background-color:  #ff5830; color: white" onclick="confimarEliminacion('{{$item->id}}')">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </td>

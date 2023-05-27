@@ -10,7 +10,7 @@
                 <table class="table table-nowrap table-striped">
                     <thead>
                         <tr>
-                            <th >Nombre</th>
+                            <th>Nombre</th>
                             <th>Cantidad</th>
                             <th>Minimo</th>
                             <th>Precio</th>
@@ -89,11 +89,11 @@
                 <table class="table table-nowrap table-striped">
                     <thead>
                         <tr>
-                            <td>#</td>
-                            <td>Productos</td>
-                            <td>Total</td>
-                            <td>Hora</td>
-                            <td>Pago</td>
+                            <th>#</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Hora</th>
+                            <th>Pago</th>
                         </tr>
                         <tbody>
                             @forelse ($ultimasVentas as $venta)

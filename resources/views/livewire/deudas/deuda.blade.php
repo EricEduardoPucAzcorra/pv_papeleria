@@ -1,7 +1,7 @@
 <div class="row justify-content-center pt-4">
     <div class="col-md-10">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #ffffa2">
                 <h3 class="card-title">Lista de deudas</h3>
 
                 <div class="card-tools">

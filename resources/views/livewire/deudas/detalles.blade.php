@@ -1,5 +1,5 @@
 <div>
-    <h6>Detalles de {{ $deudor->nombre . ' ' . $deudor->apellido }}</h6>
+    <h6 >Detalles de {{ $deudor->nombre . ' ' . $deudor->apellido }}</h6>
 
     <div class="row justify-content-center pt-4">
         <div class="col-md-10">
