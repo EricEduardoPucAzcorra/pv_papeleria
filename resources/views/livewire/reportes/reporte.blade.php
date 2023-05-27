@@ -17,13 +17,13 @@
                     <table class="table table-nowrap table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Items</th>
-                                <th>Total</th>
-                                <th>Estado</th>
-                                <th></th>
+                                <th style="background-color: #ffffa2">ID</th>
+                                <th style="background-color: #ffffa2">Fecha</th>
+                                <th style="background-color: #ffffa2">Hora</th>
+                                <th style="background-color: #ffffa2">Items</th>
+                                <th style="background-color: #ffffa2">Total</th>
+                                <th style="background-color: #ffffa2">Estado</th>
+                                <th style="background-color: #ffffa2"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,7 +94,7 @@
 
                     <!-- Exportar reportes -->
                     <div class="form-group">
-                        <button class="btn btn-danger btn-block" wire:click.prevent="exportarPDF()">
+                        <button class="btn btn btn-block" style="background-color: #ff5830; color: white" wire:click.prevent="exportarPDF()">
                             <i class="fas fa-file-export"></i>
                             PDF
                         </button>

@@ -7,15 +7,15 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Items</th>
-                    <th>Pago</th>
-                    <th>Cambio</th>
-                    <th>Total</th>
-                    <th style="width: 40px">Estatus</th>
-                    <th style="width: 80px"></th>
+                    <th style="width: 10px; background-color: #ffffa2">#</th>
+                    <th style="background-color: #ffffa2">Fecha</th>
+                    <th style="background-color: #ffffa2">Hora</th>
+                    <th style="background-color: #ffffa2">Items</th>
+                    <th style="background-color: #ffffa2">Pago</th>
+                    <th style="background-color: #ffffa2">Cambio</th>
+                    <th style="background-color: #ffffa2">Total</th>
+                    <th style="width: 40px; background-color: #ffffa2">Estatus</th>
+                    <th style="width: 80px; background-color: #ffffa2"></th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +45,7 @@
                                     </button>
                                 @endif
                             @else
-                                <button class="btn btn-sm btn-danger" onclick="cancelarVenta('{{ $venta->id }}')">
+                                <button class="btn btn-sm btn" style="background-color: #ff5830; color: white" onclick="cancelarVenta('{{ $venta->id }}')">
                                     <i class="fas fa-times"></i>
                                 </button>
                             @endif

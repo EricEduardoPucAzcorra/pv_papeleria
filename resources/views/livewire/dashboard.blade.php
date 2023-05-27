@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header border-0">
+            <div class="card-header border-0" style="background-color: #ffffa2">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Productos por agotarse</h3>
                 </div>
@@ -10,7 +10,7 @@
                 <table class="table table-nowrap table-striped">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
+                            <th >Nombre</th>
                             <th>Cantidad</th>
                             <th>Minimo</th>
                             <th>Precio</th>
@@ -37,7 +37,7 @@
         <!-- /.card -->
 
         <div class="card">
-            <div class="card-header border-0">
+            <div class="card-header border-0" style="background-color: #ffffa2">
                 <h3 class="card-title">Productos más vendidos</h3>
             </div>
             <div class="card-body table-responsive p-0">
@@ -78,7 +78,7 @@
     <!-- /.col-md-6 -->
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header border-0">
+            <div class="card-header border-0" style="background-color: #ffffa2">
                 <div class="d-flex justify-content-between">
                     <h3 class="card-title">Últimas ventas</h3>
                     <a href="{{route('reportes')}}">Ver reporte</a>
@@ -120,7 +120,7 @@
         <!-- /.card -->
 
         <div class="card">
-            <div class="card-header border-0">
+            <div class="card-header border-0" style="background-color: #ffffa2">
                 <h3 class="card-title">Deudas activas <small>(más antiguas)</small></h3>
             </div>
             <div class="card-body">

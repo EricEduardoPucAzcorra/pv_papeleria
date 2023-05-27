@@ -28,11 +28,11 @@
                     <table class="table table-striped table-head-fixed text-nowrap">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th style="width: 20%">Cantidad</th>
-                                <th></th>
+                                <th style="background-color: #ffffa2">ID</th>
+                                <th style="background-color: #ffffa2">Nombre</th>
+                                <th style="background-color: #ffffa2">Precio</th>
+                                <th style="width: 20%; background-color: #ffffa2">Cantidad</th>
+                                <th style="background-color: #ffffa2"></th>
                             </tr>
                         </thead>
                         <tbody>

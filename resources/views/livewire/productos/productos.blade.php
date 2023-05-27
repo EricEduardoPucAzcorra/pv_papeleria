@@ -24,14 +24,14 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>SKU</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Min.</th>
-                            <th>Categoria</th>
-                            <th></th>
+                            <th style="background-color: #ffffa2"></th>
+                            <th style="background-color: #ffffa2">SKU</th>
+                            <th style="background-color: #ffffa2">Nombre</th>
+                            <th style="background-color: #ffffa2">Precio</th>
+                            <th style="background-color: #ffffa2">Stock</th>
+                            <th style="background-color: #ffffa2">Min.</th>
+                            <th style="background-color: #ffffa2">Categoria</th>
+                            <th style="background-color: #ffffa2"></th>
                         </tr>
                     </thead>
                     <tbody>

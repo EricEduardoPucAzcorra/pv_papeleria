@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center pt-4">
     <div class="col-md-10">
         <div class="card card-primary card-outline">
-            <div class="card-header">
+            <div class="card-header" style="background-color: #ffffa2">
                 <h5 class="card-title">
                     <i class="fas fa-dollar-sign"></i>
                     <span>Calcular precios</span>
