@@ -26,10 +26,10 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Usos</th>
-                            <th></th>
+                            <th style="background-color: #ffffa2">ID</th>
+                            <th style="background-color: #ffffa2">Nombre</th>
+                            <th style="background-color: #ffffa2">Usos</th>
+                            <th style="background-color: #ffffa2"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,11 +39,11 @@
                                 <td>{{ $categoria->nombre }}</td>
                                 <td> {{ $categoria->productos->count() }} </td>
                                 <td class="text-right">
-                                    <button class="btn btn-primary" wire:click="edit({{ $categoria }})">
+                                    <button class="btn btn-primary"  wire:click="edit({{ $categoria }})">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     @if ($categoria->productos->count() == 0)
-                                        <button class="btn btn-danger"
+                                        <button class="btn btn" style="background-color: #ff5830; color: white"
                                             onclick="confimarEliminacion('{{ $categoria->id }}')">
                                             <i class="fas fa-times"></i>
                                         </button>
