@@ -18,7 +18,7 @@
                             </div>
                         </div>
                     </div> --}}
-                    
+
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -43,13 +43,23 @@
                                     <td>${{ number_format($deuda->total, 2) }}
                                     </td>
                                     <td>
-                                        <button class="btn {{$deuda->estatus == 'PENDIENTE' ? 'btn-danger' : 'btn-secondary'}}">
+                                        {{-- <button class="btn {{$deuda->estatus == 'PENDIENTE' ? 'btn-danger' : 'btn-secondary'}}">
                                             {{ $deuda->estatus }}
-                                        </button>
+                                        </button> --}}
+
+                                        @if($deuda->estatus=='PENDIENTE')
+
+                                            <button style="background-color: #ff5830; color: white" class="btn btn-default">PENDIENTE</button>
+                                        @else
+
+                                            <button class="btn btn-success">COMPLETADO</button>
+
+                                        @endif
+
                                     </td>
                                     <td class="text-right">
                                         @if ($deuda->estatus == 'PENDIENTE')
-                                            
+
                                             <button class="btn btn-success btn-sm" onclick="pagarDeuda('{{$deuda->id}}')">
                                                 <i class="fas fa-money-bill-wave"></i>
                                             </button>
@@ -60,7 +70,7 @@
                                         </button>
                                     </td>
                                 </tr>
-                            @empty 
+                            @empty
                                 <tr>
                                     <td colspan="6">
                                         <h3 class="text-center">No hay deudas registradas</h3>
@@ -73,7 +83,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    
+
                 </div>
             </div>
             <!-- /.card -->

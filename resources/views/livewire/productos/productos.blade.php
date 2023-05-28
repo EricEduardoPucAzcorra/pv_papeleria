@@ -24,7 +24,7 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th style="background-color: #ffffa2"></th>
+                            <th style="background-color: #ffffa2">IMAGEN</th>
                             <th style="background-color: #ffffa2">SKU</th>
                             <th style="background-color: #ffffa2">Nombre</th>
                             <th style="background-color: #ffffa2">Precio</th>
@@ -39,8 +39,17 @@
 
                             <tr>
                                 <td>
-                                    <img src="{{ $item->imagen }}" width="36" height="36" class="" style="object-fit: cover; object-position: center" alt="{{ $item->nombre }}">
+                                    @if($item->imagen=="")
+
+                                    <img src="{{asset('dist/img/aprendizaje.png')}}" width="36" height="36" class="" style="object-fit: cover; object-position: center"">
+
+                                    @else
+                                    <img src="{{asset('storage/' . $item->imagen)}}" width="36" height="36" class="" style="object-fit: cover; object-position: center" alt="{{ $item->nombre }}">
+
+                                    @endif
+
                                 </td>
+
                                 <td>{{$item->sku}}</td>
                                 <td>{{$item->nombre}}</td>
                                 <td>{{$item->costo}}</td>

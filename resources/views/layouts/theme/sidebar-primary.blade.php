@@ -10,9 +10,15 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ Auth::user()->imagen }}" class="img-circle elevation-2" alt="Imagen de usuario">
-            </div>
+            @if(Auth::user()->imagen=="")
+                <div class="image">
+                    <img src="{{asset('dist/img/user.png')}}" class="img-circle elevation-2" alt="Imagen de usuario">
+                </div>
+            @else
+                <div class="image">
+                    <img src="{{ Auth::user()->imagen }}" class="img-circle elevation-2" alt="Imagen de usuario">
+                </div>
+            @endif
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->nombre}}</a>
             </div>

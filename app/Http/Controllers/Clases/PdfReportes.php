@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Clases;
 
@@ -9,12 +9,12 @@ class PdfReportes extends PDF
     //funcion para crear el encabezado
     function Header()
     {
-        $this->Image(\public_path('dist/img/logo.png'), 2, 0.8, 6, 2);
+        $this->Image(\public_path('dist/img/jordana-circle.png'), 3, 0.0, 4, 4);
         $this->SetFont('Arial', 'B', 16);
         $this->Cell(0, 1, 'Reporte de ventas', 0, 1, 'C');
         $this->Ln(0.1);
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(0, 1, 'Detalles del periodo', 'B', 1, 'C');
+        $this->Cell(0, 1, 'Detalles del periodo', 0, 1, 'C');
         $this->Ln(0.2);
         $this->SetFont('Arial', '', 10);
     }

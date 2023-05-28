@@ -3,7 +3,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #ff5830; color: white">
                 <h5 class="modal-title" id="exampleModalLabel">Detalles de deuda</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                     wire:click.prevent="resetUI">
@@ -24,11 +24,11 @@
                             <table class="table table-nowrap table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Producto</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio</th>
-                                        <th>Total</th>
+                                        <th >ID</th>
+                                        <th >Producto</th>
+                                        <th >Cantidad</th>
+                                        <th >Precio</th>
+                                        <th >Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,7 +54,7 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                <button type="button" class="btn btn"  style="background-color: #ff5830; color: white" data-dismiss="modal"
                     wire:click.prevent="resetUI">Cerrar</button>
                 {{-- <button type="button" class="btn btn-danger">Cancelar Venta</button> --}}
             </div>

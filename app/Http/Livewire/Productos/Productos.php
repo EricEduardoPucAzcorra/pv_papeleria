@@ -112,12 +112,12 @@ class Productos extends Component
             $this->validate([
                 'imagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            
+
             //Almacenar la imagen
             $nombreNuevo = \uniqid() . '.' . $this->imagen->extension();
 
             $this->imagen->storeAs('public/productos', $nombreNuevo);
-            
+
             $imagen = 'productos/' . $nombreNuevo;
         }
 
@@ -173,15 +173,18 @@ class Productos extends Component
                 'imagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
-            //Eliminar la imagen anterior
-            \unlink(public_path('storage/' . $producto->imagen));
+            if($producto->imagen){
+                 //Eliminar la imagen anterior
+                 \unlink(public_path('storage/' . $producto->imagen));
+            }
 
             //Almacenar la imagen
             $nombreNuevo = \uniqid() . '.' . $this->imagen->extension();
 
             $this->imagen->storeAs('public/productos', $nombreNuevo);
-            
+
             $imagen = 'productos/' . $nombreNuevo;
+
         }
 
         //Iniciar una transaccion
