@@ -46,4 +46,8 @@ class RouteController extends Controller
     {
         return view('deudas.show', compact('deudor'));
     }
+
+    public function usuarios(){
+        return view('usuarios.usuarios');
+    }
 }

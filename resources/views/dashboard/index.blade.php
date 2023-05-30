@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-    <x-header titulo="Home" localizacion="Dashboard" />
+    <x-header titulo="Tablero" localizacion="Dashboard" />
 @endsection
 
 @section('titulo', 'Panel de inicio')

@@ -38,4 +38,6 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('reportes/pdf/{inicio}/{fin}', PDFController::class)->name('reportes.pdf');
 
+    Route::get('usuarios', [RouteController::class, 'usuarios'])->name('usuarios.index');
+
 });

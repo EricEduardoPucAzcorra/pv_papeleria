@@ -1,11 +1,13 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #000066">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
 
-        <img src="{{asset('dist/img/jordana-circle.png')}}" alt="" class="brand-image elevation-4"
-            style="opacity: .8; ">
+        <span class="brand-text font-weight-light">SPV-JP</span>
 
-        <span class="brand-text font-weight-light">SPV</span>
+        <img src="{{asset('dist/img/jordana-circle.png')}}" alt="" class="brand-image img-circle elevation-2"
+            style="opacity: .8; background-color: #000066; border:transparent">
+
+
     </a>
 
     <!-- Sidebar -->
@@ -119,6 +121,17 @@
                         </p>
                     </a>
                 </li> --}}
+
+                <li class="nav-item">
+                    <a href="{{route('usuarios.index')}}" class="nav-link {{!Route::is('usuarios.index') ?: 'active'}}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Usuarios
+                        </p>
+                    </a>
+                </li>
+
+
                 <li class="nav-item">
                     <a href="javascript:void(0);" onclick="document.getElementById('logout').submit()" class="nav-link">
                         <i class="nav-icon fas fa-user-times"></i>
