@@ -31,7 +31,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-header">PRINCIPAL</li>
+               <li class="nav-header" style="background-color: #dbd6d6; color: rgb(8, 8, 8)"><b>PRINCIPAL</b></li>
                 <li class="nav-item">
                     <a href="{{route('dashboard')}}" class="nav-link {{!Route::is('dashboard') ?: 'active' }}">
                         <i class="fas fa-tachometer-alt"></i>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">INVENTARIO</li>
+                <li class="nav-header" style="background-color: #dbd6d6; color: rgb(8, 8, 8)"><b>INVENTARIO</b></li>
 
                 <li class="nav-item">
                     <a href="{{route('categorias')}}" class="nav-link {{!Route::is('categorias') ?: 'active' }}">
@@ -82,7 +82,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">REPORTES</li>
+                <li class="nav-header" style="background-color: #dbd6d6; color: rgb(8, 8, 8)"><b>REPORTES</b></li>
 
                 <li class="nav-item">
                     <a href="{{route('deudas.index')}}" class="nav-link {{!Route::is('deudas.*') ?: 'active'}}">
@@ -109,7 +109,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">CUENTA</li>
+                <li class="nav-header" style="background-color: #dbd6d6; color: rgb(8, 8, 8)"><b>CUENTA</b></li>
 
                 {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
