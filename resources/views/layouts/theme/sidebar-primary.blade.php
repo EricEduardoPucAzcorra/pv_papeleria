@@ -1,9 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-        <img src="{{asset('dist/img/Papelería.png')}}" alt="Logo D|S" class="brand-image elevation-3"
-            style="opacity: .8;">
-        <span class="brand-text font-weight-light">SPVS</span>
+
+        <img src="{{asset('dist/img/jordana-circle.png')}}" alt="" class="brand-image elevation-4"
+            style="opacity: .8; ">
+
+        <span class="brand-text font-weight-light">SPV</span>
     </a>
 
     <!-- Sidebar -->
