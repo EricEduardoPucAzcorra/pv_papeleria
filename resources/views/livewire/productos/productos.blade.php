@@ -41,7 +41,7 @@
                                 <td>
                                     @if($item->imagen=="")
 
-                                    <img src="{{asset('dist/img/aprendizaje.png')}}" width="36" height="36" class="" style="object-fit: cover; object-position: center"">
+                                    <img src="{{asset('dist/img/aprendizaje.png')}}" width="36" height="36" class="" style="object-fit: cover; object-position: center">
 
                                     @else
                                     <img src="{{asset('storage/' . $item->imagen)}}" width="36" height="36" class="" style="object-fit: cover; object-position: center" alt="{{ $item->nombre }}">
