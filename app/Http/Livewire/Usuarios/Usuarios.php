@@ -14,11 +14,9 @@ class Usuarios extends Component
     public $apellido;
     public $email;
     public $telefono;
-    // public $email_verified_at;
     public $password;
     public $imagen;
-    // public $estatus;
-    public $remember_token;
+    public $estatus;
 
     //Variables serch
     public $search;
@@ -28,8 +26,7 @@ class Usuarios extends Component
 
     public $usuarios = [];
     public $valor = 0;
-    public $modal = false;
-    public $bandera = 'nuevo';
+    public $bandera = '';
 
     public function render()
     {
@@ -43,35 +40,14 @@ class Usuarios extends Component
 
     public function create(){
         $this->emit('usuarios', 'show');
-    }
-
-    public function resetUI()
-    {
-        $this->nombre ='';
-        $this->apellido ='';
-        $this->email ='';
-        $this->telefono ='';
-        // $this->email_verified_at ='';
-        $this->password ='';
-        $this->imagen ='';
-        // $this->estatus ='';
-        $this->remember_token ='';
-    }
-
-    public function edit($usuario)
-    {
-        $this->modal = true;
-        $this->bandera='editar';
-        $this->nombre = $usuario['nombre'];
-        $this->apellido = $usuario['apellido'];
-        $this->email = $usuario['email'];
-        $this->telefono = $usuario['telefono'];
-        //$this->email_verified_at = $usuario->email_verified_at;
-        //$this->password = $usuario->password;
-        // // $this->imagen = $usuario->imagen;
-
-        //dd($usuario);
-
+        $this->bandera = 'nuevo';
+        $this->nombre='';
+        $this->apellido='';
+        $this->email='';
+        $this->telefono='';
+        $this->password='';
+        $this->imagen='';
+        $this->estatus='ACTIVO';
     }
 
     public function store()
@@ -98,6 +74,22 @@ class Usuarios extends Component
 
             $imagen = 'usuarios/' . $nombreNuevo;
         }
+    }
+
+
+    public function edit($usuario)
+    {
+        $this->emit('usuarios', 'show');
+        $this->bandera='editar';
+        $this->nombre = $usuario['nombre'];
+        $this->apellido = $usuario['apellido'];
+        $this->email = $usuario['email'];
+        $this->telefono = $usuario['telefono'];
+        //$this->password = $usuario;
+        $this->imagen = $usuario['imagen'];
+        $this->estatus = $usuario['estatus'];
+        //dd($usuario);
+
     }
 
     public function update(Producto $producto)
@@ -133,10 +125,4 @@ class Usuarios extends Component
         }
     }
 
-    // public function oprimir(){
-
-
-
-    //     $this->valor ++;
-    // }
 }
