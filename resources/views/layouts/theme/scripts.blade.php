@@ -37,6 +37,11 @@
         $('#modal-opciones').modal(modal);
     })
 
+    livewire.on('usuarios', function (modal) {
+        $('#modaluser').modal(modal);
+    })
+
+
     //Escuchar evento / Confirmar eliminación
     function confimarEliminacion(id) {
         Swal.fire({
@@ -92,4 +97,7 @@
         livewire.emit('agregar', sku.detail.scanCode);
     })
 
+
 </script>
+
+

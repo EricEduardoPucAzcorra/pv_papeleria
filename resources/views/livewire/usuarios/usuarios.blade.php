@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="col-2">
-                        <button class="btn btn-primary btn-sm float-right" type="button" data-toggle="modal" data-target="#modal-opciones">Agregar</button>
+                        <button class="btn btn-primary btn-sm float-right" type="button" wire:click="create()">Agregar</button>
                     </div>
                 </div>
             </div>
@@ -45,15 +45,15 @@
                                 <td>{{$item->nombre}}</td>
                                 <td>{{$item->apellido}}</td>
                                 <td>
-                                    @if($usuarios->estatus=='INACTIVO')
+                                    @if($item->estatus=='INACTIVO')
                                         <button style="background-color: #ff5830; color: white" class="btn btn-default">INACTIVO</button>
                                     @else
                                         <button class="btn btn-success">ACTIVO</button>
                                     @endif
                                 </td>
-                                
+
                                 <td>
-                                    <button class="btn btn-primary" wire:click.prevent="edit({{$item}})">
+                                    <button class="btn btn-primary" type="button" wire:click="edit({{$item}})" >
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </td>
@@ -69,9 +69,14 @@
         </div>
     </div>
     <!-- Ventana modal de opciones -->
-    {{-- @include('modals.modal-header') --}}
-    @include('usuarios.formu')
-    {{-- @include('modals.modal-footer') --}}
+
+    @include('modals.modalusuarios')
+
+
+
 </section>
+
+
+
 
 

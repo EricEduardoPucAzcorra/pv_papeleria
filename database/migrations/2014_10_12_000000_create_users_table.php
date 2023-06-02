@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('apellido')->nullable();
             $table->string('email')->unique();
             $table->string('telefono')->unique()->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('imagen')->nullable();
-            $table->enum('estatus', ['ACTIVO', 'SUSPENDIDO', 'INACTIVO'])->default('ACTIVO');
-            $table->rememberToken();
+            $table->enum('estatus', ['ACTIVO', 'INACTIVO'])->default('ACTIVO');
+            // $table->rememberToken();
             $table->timestamps();
         });
     }

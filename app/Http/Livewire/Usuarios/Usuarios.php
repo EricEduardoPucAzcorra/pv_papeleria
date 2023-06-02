@@ -8,7 +8,7 @@ use App\Models\User;
 
 class Usuarios extends Component
 {
-    
+
     //variables del producto
     public $nombre;
     public $apellido;
@@ -28,6 +28,8 @@ class Usuarios extends Component
 
     public $usuarios = [];
     public $valor = 0;
+    public $modal = false;
+    public $bandera = 'nuevo';
 
     public function render()
     {
@@ -37,6 +39,10 @@ class Usuarios extends Component
         $this->usuarios = $users;
 
         return view('livewire.usuarios.usuarios');
+    }
+
+    public function create(){
+        $this->emit('usuarios', 'show');
     }
 
     public function resetUI()
@@ -52,15 +58,19 @@ class Usuarios extends Component
         $this->remember_token ='';
     }
 
-    public function edit(Usuario $usuario)
+    public function edit($usuario)
     {
-        $this->nombre = $usuario->nombre;
-        $this->apellido = $usuario->apellido;
-        $this->email = $usuario->email;
-        $this->telefono = $usuario->telefono;
-        // $this->email_verified_at = $usuario->email_verified_at;
-        $this->password = $usuario->password;
-        // $this->imagen = $usuario->imagen;
+        $this->modal = true;
+        $this->bandera='editar';
+        $this->nombre = $usuario['nombre'];
+        $this->apellido = $usuario['apellido'];
+        $this->email = $usuario['email'];
+        $this->telefono = $usuario['telefono'];
+        //$this->email_verified_at = $usuario->email_verified_at;
+        //$this->password = $usuario->password;
+        // // $this->imagen = $usuario->imagen;
+
+        //dd($usuario);
 
     }
 
