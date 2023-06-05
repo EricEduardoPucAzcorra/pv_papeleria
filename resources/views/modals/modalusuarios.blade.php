@@ -17,10 +17,17 @@
     <div class="modal-body">
 
         @include('usuarios.formu')
+        {{$user}}
     </div>
     <div class="modal-footer">
+
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        @if($bandera=='nuevo')
         <button type="button" class="btn btn-primary">Guardar</button>
+          @else
+          <button type="button" class="btn btn-primary" wire.click="update()">Editar</button>  
+          @endif
+        
     </div>
     </div>
 </div>

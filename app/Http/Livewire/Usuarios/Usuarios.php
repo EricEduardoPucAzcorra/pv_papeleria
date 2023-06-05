@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Usuarios;
-
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 use App\Models\User;
@@ -10,6 +10,7 @@ class Usuarios extends Component
 {
 
     //variables del producto
+    public $id_usuario;
     public $nombre;
     public $apellido;
     public $email;
@@ -77,10 +78,14 @@ class Usuarios extends Component
     }
 
 
+
+    public $user=[];
+
     public function edit($usuario)
     {
         $this->emit('usuarios', 'show');
         $this->bandera='editar';
+        $this->id_usuario=$usuario['id'];
         $this->nombre = $usuario['nombre'];
         $this->apellido = $usuario['apellido'];
         $this->email = $usuario['email'];
@@ -88,41 +93,71 @@ class Usuarios extends Component
         //$this->password = $usuario;
         $this->imagen = $usuario['imagen'];
         $this->estatus = $usuario['estatus'];
-        //dd($usuario);
+         
+        $this->user=$usuario;
 
     }
 
-    public function update(Producto $producto)
+    public function update()
     {
-        $this->validate([
-            'nombre' => 'required|min:3',
-            'apellido' => 'required|min:3',
-            'email' => 'required|min:3',
-            'telefono' => 'required|min:3',
-            'password' => 'required|min:3',
-        ]);
+        dd($this->user);
+        // $this->validate([
+        //     'nombre' => 'required|min:3',
+        //     'apellido' => 'required|min:3',
+        //     'email' => 'required|min:3',
+        //     'telefono' => 'required|min:3',
+        //     'password' => 'required|min:3',
+        // ]);
 
-        $imagen = $producto->imagen;
+        // $imagen = $usuario->imagen;
 
-        //Validar la imagen
-        if ($this->imagen) {
-            $this->validate([
-                'imagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+        // //Validar la imagen
+        // if ($this->imagen) {
+        //     $this->validate([
+        //         'imagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     ]);
 
-            if($producto->imagen){
-                 //Eliminar la imagen anterior
-                 \unlink(public_path('storage/' . $usuario->imagen));
-            }
+        //     if($usuario->imagen){
+        //          //Eliminar la imagen anterior
+        //          \unlink(public_path('storage/' . $usuario->imagen));
+        //     }
 
-            //Almacenar la imagen
-            $nombreNuevo = \uniqid() . '.' . $this->imagen->extension();
+        //     //Almacenar la imagen
+        //     $nombreNuevo = \uniqid() . '.' . $this->imagen->extension();
 
-            $this->imagen->storeAs('public/usuarios', $nombreNuevo);
+        //     $this->imagen->storeAs('public/usuarios', $nombreNuevo);
 
-            $imagen = 'usuarios/' . $nombreNuevo;
+        //     $imagen = 'usuarios/' . $nombreNuevo;
 
-        }
+        // }
+
+        // //Iniciar una transaccion
+        // DB::beginTransaction();
+        // try {
+        //     //Actualizar el usuario
+        //     $usuario->update([
+        //         'nombre' => $this->nombre,
+        //         'apellido' => $this->apellido,
+        //         'email' => $this->email,
+        //         'telefono' => $this->telefono,
+        //         'passsword' => $this->password,
+        //         'imagen' => $imagen,
+        //     ]);
+        //     //Confirmar la transaccion
+        //     DB::commit();
+        //     //Mensaje de exito
+        //     $this->emit('usuario-actualizado', 'El usuario se ha actualizado correctamente');
+        // } catch (\Exception $e) {
+        //     //Cancelar la transaccion
+        //     DB::rollBack();
+        //     //Mensaje de error
+        //     $this->emit('usuario-error', 'Ha ocurrido un error al actualizar el usuario');
+        // }
+
+        // //Cerrar la modal
+        // $this->emit('modal-operaciones', 'hide');
+
+        // $this->resetUI();
     }
 
 }
