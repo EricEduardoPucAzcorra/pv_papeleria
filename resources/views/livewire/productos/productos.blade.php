@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="col-2">
-                        <button class="btn btn-primary btn-sm float-right" type="button" data-toggle="modal" data-target="#modal-opciones" {{ $categoria == -1 ? 'disabled' : '' }}>Agregar</button>
+                        <button class="btn btn-primary btn-sm float-right" type="button" data-toggle="modal" data-target="#modal-opciones">Agregar</button>
                     </div>
                 </div>
             </div>

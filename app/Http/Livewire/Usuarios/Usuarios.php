@@ -27,21 +27,43 @@ class Usuarios extends Component
     //Variables serch
     public $search;
 
+    public function mount()
+    {
+        // $this->selected_id = -1;
+        $this->operationName = 'Usuarios';
+        // $this->categoria = Categoria::all()->count() > 0 ? Categoria::all()->first()->id : -1;
+    }
+
     //pribadas no puede visualizarse en la vista
     //publicas si puede visualizarse
 
-    public $usuarios = [];
+    //public $usuarios = [];
     public $valor = 0;
     public $bandera = '';
 
     public function render()
     {
+        $users = [];
 
-        $users = User::all();
+        if ($this->search) {
+            $users = User::orderBy('nombre', 'asc')
+                ->where('nombre', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('apellido', 'LIKE', '%' . $this->search . '%')
+               
+                ->paginate(10);
 
-        $this->usuarios = $users;
+                
+        } else {
+            $users = User::orderBy('nombre', 'asc')->paginate(10);
+            
+        }
 
-        return view('livewire.usuarios.usuarios');
+
+        //$user = User::all();
+
+        $usuarios = $users;
+
+        return view('livewire.usuarios.usuarios', compact('usuarios'));
     }
 
     public function resetForm(){
@@ -210,6 +232,18 @@ class Usuarios extends Component
 
         $this->resetForm();
 
+
+    }
+
+    public function activar($id){
+        $usuario = User::find($id);
+        $usuario->estatus = 'ACTIVO';
+        $usuario->update();
+    }
+    public function desactivar($id){
+        $usuario = User::find($id);
+        $usuario->estatus = 'INACTIVO';
+        $usuario->update();
 
     }
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('sku');
             $table->string('nombre');
-            $table->integer('costo');
-            $table->integer('precio');
+            $table->float('costo');
+            $table->float('precio');
             $table->integer('stock');
             $table->string('imagen')->nullable();
             $table->integer('minimo_stock');

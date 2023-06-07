@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $producto->nombre }}</td>
-                                    <td>{{ number_format($producto->precio) }}</td>
+                                    <td>{{ $producto->precio }}</td>
                                     <td class="d-flex">
 
                                         <button wire:click.prevent="reducirItem('{{ $producto->sku }}')"

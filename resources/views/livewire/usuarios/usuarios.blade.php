@@ -46,9 +46,9 @@
                                 <td>{{$item->apellido}}</td>
                                 <td>
                                     @if($item->estatus=='INACTIVO')
-                                        <button style="background-color: #ff5830; color: white" class="btn btn-default">INACTIVO</button>
+                                        <button style="background-color: #ff5830; color: white" wire:click="activar({{$item->id}})" class="btn btn-default" >INACTIVO</button>
                                     @else
-                                        <button class="btn btn-success">ACTIVO</button>
+                                        <button class="btn btn-success " wire:click="desactivar({{$item->id}})">ACTIVO</button>
                                     @endif
                                 </td>
 
@@ -63,9 +63,9 @@
                     </tbody>
                 </table>
             </div>
-            {{-- <div class="card-footer">
+            <div class="card-footer">
                 {{$usuarios->links()}}
-            </div> --}}
+            </div>
         </div>
     </div>
     <!-- Ventana modal de opciones -->
