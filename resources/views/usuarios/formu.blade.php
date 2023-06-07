@@ -43,7 +43,8 @@
 
     <div class="col-12 mt-2">
         <label>Imagen</label>
-        <input type="file" class="form-control" wire:model.lazy="imagen">
+
+        <input type="file" class="form-control" wire:model="imagen">
         @error('imagen')
             <small class="text-danger">{{ $message }}</small>
         @enderror

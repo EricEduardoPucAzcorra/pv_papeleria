@@ -44,6 +44,21 @@ class Usuarios extends Component
         return view('livewire.usuarios.usuarios');
     }
 
+    public function resetForm(){
+        $this->nombre='';
+        $this->apellido='';
+        $this->email='';
+        $this->telefono='';
+        $this->password='';
+        $this->imagen='';
+        $this->estatus='ACTIVO';
+    }
+
+    public function closeform(){
+        $this->resetForm();
+        $this->emit('usuarios', 'hide');
+    }
+
     public function create(){
         $this->emit('usuarios', 'show');
         $this->bandera = 'nuevo';
@@ -58,6 +73,7 @@ class Usuarios extends Component
 
     public function store()
     {
+        //valida datos
         $this->validate([
             'nombre' => 'required|min:3',
             'apellido' => 'required|min:2',
@@ -66,7 +82,7 @@ class Usuarios extends Component
             'password' => 'required|min:3',
 
         ]);
-
+        //valida en especiico la imagen tipo file
         if ($this->imagen) {
             //Validar la imagen
             $this->validate([
@@ -81,7 +97,7 @@ class Usuarios extends Component
             $imagen = 'usuarios/' . $nombreNuevo;
         }
 
-        
+
         //Iniciar una transaccion
         DB::beginTransaction();
         try {
@@ -92,12 +108,11 @@ class Usuarios extends Component
                 'email' => $this->email,
                 'telefono' => $this->telefono,
                 'password' => Hash::make($this->password),
-                'imagen' => $imagen,
-                
+                'imagen' => $imagen ?? null,
             ]);
             //Confirmar la transaccion
             DB::commit();
-            
+
         } catch (\Exception $e) {
             //Cancelar la transaccion
             DB::rollBack();
@@ -107,7 +122,7 @@ class Usuarios extends Component
         //Cerrar la modal
         $this->emit('usuarios', 'hide');
         $this->render();
-        // $this->resetUI();
+        $this->resetForm();
     }
 
     public $user = [];
@@ -122,7 +137,7 @@ class Usuarios extends Component
         $this->email = $usuario['email'];
         $this->telefono = $usuario['telefono'];
         //$this->password = $usuario;
-        $this->imagen = $usuario['imagen'];
+        //$this->imagen = $usuario['imagen'];
         $this->estatus = $usuario['estatus'];
 
        $this->user=$usuario;
@@ -175,11 +190,12 @@ class Usuarios extends Component
                 'telefono' => $this->telefono,
                 'password' => Hash::make($this->password),
                 'imagen' => $imagen,
+                'estatus'=> $this->estatus
             ]);
             //Confirmar la transaccion
             DB::commit();
             //Mensaje de exito
-            //$this->emit('usuario-actualizado', 'El usuario se ha actualizado correctamente');
+            //$this->emit('producto-creado', 'El usuario se ha actualizado correctamente');
         } catch (\Exception $e) {
             //Cancelar la transaccion
             DB::rollBack();
@@ -189,6 +205,10 @@ class Usuarios extends Component
 
         //Cerrar la modal
         $this->emit('usuarios', 'hide');
+
+        $this->render();
+
+        $this->resetForm();
 
 
     }
