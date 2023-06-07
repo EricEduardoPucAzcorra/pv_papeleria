@@ -39,6 +39,8 @@
         @enderror
     </div>
 
+    {{-- <img src="{{asset('storage/' . $imagen)}}" alt="" srcset=""> --}}
+
     <div class="col-12 mt-2">
         <label>Imagen</label>
         <input type="file" class="form-control" wire:model.lazy="imagen">

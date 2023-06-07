@@ -20,7 +20,8 @@
                 </div>
             @else
                 <div class="image">
-                    <img src="{{ Auth::user()->imagen }}" class="img-circle elevation-2" alt="Imagen de usuario">
+                    <img src="{{asset('storage/' . Auth::user()->imagen) }}" class="img-circle elevation-2" alt="Imagen de usuario">
+
                 </div>
             @endif
             <div class="info">

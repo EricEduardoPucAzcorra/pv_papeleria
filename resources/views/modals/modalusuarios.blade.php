@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="modaluser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"  wire:ignore.self id="modaluser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
@@ -17,7 +17,8 @@
     <div class="modal-body">
 
         @include('usuarios.formu')
-        {{$user}}
+
+
     </div>
     <div class="modal-footer">
 
@@ -25,9 +26,9 @@
         @if($bandera=='nuevo')
         <button type="button" class="btn btn-primary">Guardar</button>
           @else
-          <button type="button" class="btn btn-primary" wire.click="update()">Editar</button>  
+          <button type="button" class="btn btn-primary" wire:click="update()">Editar</button>
           @endif
-        
+
     </div>
     </div>
 </div>
