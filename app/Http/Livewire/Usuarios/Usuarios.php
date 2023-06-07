@@ -60,7 +60,7 @@ class Usuarios extends Component
     {
         $this->validate([
             'nombre' => 'required|min:3',
-            'apellido' => 'required|min:3',
+            'apellido' => 'required|min:2',
             'email' => 'required|min:3',
             'telefono' => 'required|min:3',
             'password' => 'required|min:3',
@@ -80,6 +80,34 @@ class Usuarios extends Component
 
             $imagen = 'usuarios/' . $nombreNuevo;
         }
+
+        
+        //Iniciar una transaccion
+        DB::beginTransaction();
+        try {
+            //crear el usuario
+            User::create([
+                'nombre' => $this->nombre,
+                'apellido' => $this->apellido,
+                'email' => $this->email,
+                'telefono' => $this->telefono,
+                'password' => Hash::make($this->password),
+                'imagen' => $imagen,
+                
+            ]);
+            //Confirmar la transaccion
+            DB::commit();
+            
+        } catch (\Exception $e) {
+            //Cancelar la transaccion
+            DB::rollBack();
+            $this->emit('producto-error', 'Ha ocurrido un error al crear el usuario');
+        }
+
+        //Cerrar la modal
+        $this->emit('usuarios', 'hide');
+        $this->render();
+        // $this->resetUI();
     }
 
     public $user = [];
@@ -108,7 +136,7 @@ class Usuarios extends Component
 
         $this->validate([
             'nombre' => 'required|min:3',
-            'apellido' => 'required|min:3',
+            'apellido' => 'required|min:2',
             'email' => 'required|min:3',
             'telefono' => 'required|min:10',
             'password' => 'required|min:3',

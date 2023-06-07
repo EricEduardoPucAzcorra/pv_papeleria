@@ -24,7 +24,7 @@
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         @if($bandera=='nuevo')
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" wire:click="store()">Guardar</button>
           @else
           <button type="button" class="btn btn-primary" wire:click="update()">Editar</button>
           @endif
