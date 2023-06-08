@@ -31,7 +31,6 @@ class Usuarios extends Component
     {
         // $this->selected_id = -1;
         $this->operationName = 'Usuarios';
-        // $this->categoria = Categoria::all()->count() > 0 ? Categoria::all()->first()->id : -1;
     }
 
     //pribadas no puede visualizarse en la vista
