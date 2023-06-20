@@ -241,4 +241,8 @@ class Cuenta extends Component
 
 
     }
+
+    public function pruebaticket(){
+
+    }
 }
