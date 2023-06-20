@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Venta;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+//librerias de tickets
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\Printer;
 
 class Cuenta extends Component
 {
@@ -151,7 +154,7 @@ class Cuenta extends Component
                     $deudor = Deudor::find($this->deuda_id);
                 }
 
-                //Crear la venta 
+                //Crear la venta
                 $venta = Venta::create([
                     'total' => $this->total,
                     'items' => $this->items,
@@ -162,7 +165,7 @@ class Cuenta extends Component
                     'user_id' => auth()->user()->id,
                 ]);
             } else {
-                //Crear la venta 
+                //Crear la venta
                 $venta = Venta::create([
                     'total' => $this->total,
                     'items' => $this->items,
@@ -204,10 +207,38 @@ class Cuenta extends Component
             //Cerrar el modal
             $this->emit('modal-operaciones', 'hide');
 
+            //imprime ticket
+            $this->imprimirTicket($venta, $productos);
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             $this->emit('mostrar-alerta', $e->getMessage());
         }
+
+
+    }
+
+    public function imprimirTicket($datos, $productos){
+        //lgica de ticket
+        //dd($datos);
+       // dd($productos);
+
+        $nombreImpresora = "POS-80C";
+        $connector = new WindowsPrintConnector($nombreImpresora);
+        $impresora = new Printer($connector);
+        $impresora->setJustification(Printer::JUSTIFY_CENTER);
+        $impresora->setTextSize(2, 2);
+        $impresora->text("Imprimiendo\n");
+        $impresora->text("ticket\n");
+        $impresora->text("desde\n");
+        $impresora->text("Laravel\n");
+        $impresora->setTextSize(1, 1);
+        $impresora->text("https://parzibyte.me");
+        $impresora->feed(5);
+        $impresora->close();
+
+
+
     }
 }
