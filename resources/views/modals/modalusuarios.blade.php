@@ -2,7 +2,7 @@
 <div class="modal fade"  wire:ignore.self id="modaluser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
-    <div class="modal-header">
+    <div class="modal-header" style="background-color: #ff5830; color: white">
         <h5 class="modal-title" id="exampleModalLabel">
           @if($bandera=='nuevo')
             Nuevo Usuario
@@ -22,7 +22,7 @@
     </div>
     <div class="modal-footer">
 
-        <button type="button" class="btn btn-secondary" wire:click.prevent="closeform">Cancelar</button>
+        <button type="button" class="btn btn-secondary" wire:click.prevent="closeform" style="background-color: #ff5830; color: white">Cancelar</button>
         @if($bandera=='nuevo')
         <button type="button" class="btn btn-primary" wire:click="store()">Guardar</button>
           @else

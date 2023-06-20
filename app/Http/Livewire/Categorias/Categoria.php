@@ -22,6 +22,8 @@ class Categoria extends Component
     //variables
     public $nombre;
 
+    public $search;
+
     public function mount()
     {
         $this->selected_id = -1;
@@ -30,7 +32,17 @@ class Categoria extends Component
 
     public function render()
     {
-        $categorias = CategoriaModel::orderBy('nombre', 'asc')->paginate(10);
+        $categorias =[];
+        if ($this->search) {
+            $categorias = CategoriaModel::orderBy('nombre', 'asc')
+                ->where('nombre', 'LIKE', '%' . $this->search . '%')
+                ->paginate(10);
+                
+        } else {
+            $categorias = CategoriaModel::orderBy('nombre', 'asc')->paginate(10);
+            
+        }
+
 
         return view('livewire.categorias.categoria', compact('categorias'));
     }
