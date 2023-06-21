@@ -242,9 +242,9 @@ class Cuenta extends Component
         //     $printer->bitImage($logo);
         // }catch(Exception $e){/*No hacemos nada si hay error*/}
 
-        $printer->setTextSize(2, 2);
+        $printer->setTextSize(1, 1);
         //dts de la empresa
-        $printer->text("Papería Jordana\n");
+        $printer->text("Papelería Jordana\n");
         $printer->setTextSize(1,1);
         $printer->text("Tel: 9992669174\n");
         $printer->text("Dirección: C 6 #31B X 11 Y 13\n");
@@ -259,7 +259,7 @@ class Cuenta extends Component
         $total = 0;
 
         foreach ($productos as $producto) {
-            //$total += $producto->cantidad * $producto->precio;
+            $total += $producto['cantidad'] * $producto['precio'];
 
             /*Alinear a la izquierda para la cantidad y el nombre*/
             $printer->setJustification(Printer::JUSTIFY_LEFT);
