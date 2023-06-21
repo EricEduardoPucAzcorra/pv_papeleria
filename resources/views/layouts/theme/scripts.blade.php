@@ -41,6 +41,32 @@
         $('#modaluser').modal(modal);
     })
 
+    //captura evento irmprimir
+    livewire.on('imprimir', function(venta, productos){
+        Swal.fire({
+            title: '¿Quieres imprimir el ticket?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Sí, Imprimir!'
+        }).then((result) => {
+            if (result.value) {
+
+                //Eliminar
+                livewire.emit('imprime-ticket', venta, productos);
+
+                //Mostrar mensaje
+                Swal.fire(
+                    '¡Imprimiendo!',
+                    'Exitoso.',
+                    'success'
+                )
+            }
+        })
+    });
+
 
     //Escuchar evento / Confirmar eliminación
     function confimarEliminacion(id) {

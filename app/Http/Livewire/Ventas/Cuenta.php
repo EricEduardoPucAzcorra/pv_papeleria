@@ -11,15 +11,17 @@ use Livewire\Component;
 //librerias de tickets
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
 
 class Cuenta extends Component
 {
+
     public $cantidad, $cambio, $total;
 
     //Variables para almacenar los datos de la venta
     public $estado, $deuda_id, $nombreDeudor, $apellidoDeudor, $sobrenombreDeudor, $telefonoDeudor, $notasDeudor;
 
-    protected $listeners = ['calcular' => 'calcularTotal'];
+    protected $listeners = ['calcular' => 'calcularTotal', 'imprime-ticket'=>'imprimirTicket'];
 
     //valores para el modal
     public $selected_id = -1;
@@ -207,8 +209,10 @@ class Cuenta extends Component
             //Cerrar el modal
             $this->emit('modal-operaciones', 'hide');
 
+            $this->emit('imprimir', $venta, $productos);
             //imprime ticket
-            $this->imprimirTicket($venta, $productos);
+
+            //$this->imprimirTicket($venta, $productos);
 
             DB::commit();
         } catch (\Exception $e) {
@@ -222,33 +226,86 @@ class Cuenta extends Component
     public function imprimirTicket($datos, $productos){
         //lgica de ticket
         //dd($datos);
-       // dd($productos);
+      // dd($productos);
 
-        $nombreImpresora = "POS-80C";
-        $connector = new WindowsPrintConnector($nombreImpresora);
-        $impresora = new Printer($connector);
-        $impresora->setJustification(Printer::JUSTIFY_CENTER);
-        $impresora->setTextSize(2, 2);
-        $impresora->text("Papería Jordana\n");
-        $impresora->setTextSize(1,1);
-        $impresora->text("9992669174\n");
-        $impresora->text("Dirección:C 6 #31B X 11 Y 13\n");
-        //$impresora->text("\n");
-        $impresora->text("Productos" . $productos);
-        $impresora->setTextSize(1, 1);
-        $impresora->text("CANT\n");
-        $impresora->text("DESCRIPCIÓN\n");
-        $impresora->text("PRECIO\n");
-        $impresora->setTextSize(1, 1);
-        $impresora->text("https://parzibyte.me");
-        $impresora->feed(5);
-        $impresora->close();
+        $nombre_impresora = "POS-80C";
 
+        $connector = new WindowsPrintConnector($nombre_impresora);
+        $printer = new Printer($connector);
+
+        # Vamos a alinear al centro lo próximo que imprimamos
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+
+        //logo de la empresa
+        // try{
+        //     $logo = EscposImage::load("dist/img/Papelería.png", false);
+        //     $printer->bitImage($logo);
+        // }catch(Exception $e){/*No hacemos nada si hay error*/}
+
+        $printer->setTextSize(2, 2);
+        //dts de la empresa
+        $printer->text("Papería Jordana\n");
+        $printer->setTextSize(1,1);
+        $printer->text("Tel: 9992669174\n");
+        $printer->text("Dirección: C 6 #31B X 11 Y 13\n");
+        #La fecha también
+        $printer->text(date("Y-m-d H:i:s") . "\n");
+
+        $printer->text("Productos\n");
+
+        $printer->text("-------------------\n");
+
+        # Para mostrar el total
+        $total = 0;
+
+        foreach ($productos as $producto) {
+            //$total += $producto->cantidad * $producto->precio;
+
+            /*Alinear a la izquierda para la cantidad y el nombre*/
+            $printer->setJustification(Printer::JUSTIFY_LEFT);
+            $printer->text($producto['cantidad'] . "x" . $producto['nombre'] . "\n");
+
+            /*Y a la derecha para el importe*/
+            $printer->setJustification(Printer::JUSTIFY_RIGHT);
+            $printer->text(' $' . $producto['precio'] . "\n");
+        }
+
+        /*
+            Terminamos de imprimir
+            los productos, ahora va el total
+        */
+        $printer->text("--------\n");
+        $printer->text("TOTAL: $". $total ."\n");
+        $printer->text("Pago: $". $datos['pago'] . "\n");
+        $printer->text("Cambio: $". $datos['cambio'] . "\n");
+        /*
+            Podemos poner también un pie de página
+        */
+        $printer->text("Muchas gracias por su compra\n SPV-PJ");
+
+
+
+        /*Alimentamos el papel 3 veces*/
+        $printer->feed(3);
+
+
+        $printer->cut();
+
+        /*
+            Por medio de la impresora mandamos un pulso.
+            Esto es útil cuando la tenemos conectada
+            por ejemplo a un cajón
+        */
+        $printer->pulse();
+
+        /*
+            Para imprimir realmente, tenemos que "cerrar"
+            la conexión con la impresora. Recuerda incluir esto al final de todos los archivos
+        */
+        $printer->close();
 
 
     }
 
-    public function pruebaticket(){
 
-    }
 }
