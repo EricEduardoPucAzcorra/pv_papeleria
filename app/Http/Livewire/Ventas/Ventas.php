@@ -11,9 +11,9 @@ class Ventas extends Component
     /**
      * Componente que funcionara como carrito de compras
      * para agregar productos a la venta
-     * 
+     *
      * El carrito esta diseñado desde cero
-     * 
+     *
      */
 
      protected $listeners = ['agregar' => 'agregarProducto', 'limpiar' => 'vaciarCarrito'];
@@ -25,9 +25,9 @@ class Ventas extends Component
     public function mount()
     {
         $this->listaProductos = session('carrito') ?? [];
-        
+
     }
- 
+
     public function render()
     {
 
@@ -35,7 +35,7 @@ class Ventas extends Component
 
         if ($this->buscar) {
             $buscarProducto = Producto::where('nombre', 'like', '%' . $this->buscar . '%')
-                                    ->orWhere('sku', 'like', '%' . $this->buscar . '%')                           
+                                    ->orWhere('sku', 'like', '%' . $this->buscar . '%')
                                     ->get();
         } else {
             $buscarProducto = [];
@@ -56,7 +56,7 @@ class Ventas extends Component
                    return $clave;
                }
            }
-       } 
+       }
 
        return -1;
     }
@@ -79,7 +79,7 @@ class Ventas extends Component
         $this->buscar = '';
 
         $llave = $this->obtenerClave($sku);
-        
+
         $productos = $this->obtenerProductos();
 
         if ($llave == -1) {
