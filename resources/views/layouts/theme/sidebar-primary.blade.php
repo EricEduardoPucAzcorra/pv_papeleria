@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
 
-        <span class="brand-text font-weight-light">SPV-JP</span>
+        <span class="brand-text font-weight-light">SPV-PJ</span>
 
         <img src="{{asset('dist/img/jordana-circle.png')}}" alt="" class="brand-image img-circle elevation-2"
             style="opacity: .8; background-color: #000066; border:transparent">
@@ -70,7 +70,7 @@
                     <a href="{{route('categorias')}}" class="nav-link {{!Route::is('categorias') ?: 'active' }}">
                         <i class="fas fa-duotone fa-list nav-icon"></i>
                         <p>
-                            Categorias
+                            Categorías
                             {{-- <span class="badge badge-info right">2</span> --}}
                         </p>
                     </a>

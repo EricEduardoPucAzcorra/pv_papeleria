@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('titulo', 'Categorias')
+@section('titulo', 'Categorías')
 
 @section('header')
-    <x-header titulo="Categorias" localizacion="Categorias" />
+    <x-header titulo="Categorías" localizacion="Categorías" />
 @endsection
 
 @section('contenido')

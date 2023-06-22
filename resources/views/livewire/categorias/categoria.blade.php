@@ -73,7 +73,7 @@
     @include('modals.modal-header')
 
     <div>
-        <label for="">Nombre de la categoria</label>
+        <label for="">Nombre de la categoría</label>
         <input type="text" class="form-control" wire:model.lazy="nombre">
     </div>
 
