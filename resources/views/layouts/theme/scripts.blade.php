@@ -123,6 +123,11 @@
         livewire.emit('agregar', sku.detail.scanCode);
     })
 
+    document.addEventListener('scan', function (sku) {
+        //console.log(sku.detail.scanCode);
+        livewire.emit('sabersie', sku.detail.scanCode);
+    })
+
 
 </script>
 

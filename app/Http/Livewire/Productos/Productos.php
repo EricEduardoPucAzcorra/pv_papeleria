@@ -17,7 +17,7 @@ class Productos extends Component
     protected $paginationTheme = 'bootstrap';
 
     //Escuchar eventos desde el frontEnd
-    protected $listeners = ['eliminar-objeto' => 'destroy'];
+    protected $listeners = ['eliminar-objeto' => 'destroy', 'sabersie' => 'existencia'];
 
     //Variables necesarios para la modal
     public $selected_id;
@@ -36,12 +36,16 @@ class Productos extends Component
     //Variables serch
     public $search;
 
+
+
     public function mount()
     {
         $this->selected_id = -1;
         $this->operationName = 'Productos';
         $this->categoria = Categoria::all()->count() > 0 ? Categoria::all()->first()->id : -1;
+
     }
+
 
     public function render()
     {
@@ -95,6 +99,15 @@ class Productos extends Component
         $this->emit('modal-operaciones', 'show');
     }
 
+    public function existencia($scan){
+
+        // $producto = Producto::where('sku', $scan)->firts();
+
+        dd($scan);
+
+    }
+
+
     public function store()
     {
         $this->validate([
@@ -105,7 +118,17 @@ class Productos extends Component
             'costo' => 'required|numeric',
             'stock' => 'required|numeric',
             'inv_min' => 'required|numeric',
+        ],[
+            'sku.unique'=>'El folio del producto es unico',
+            'nombre.required'=>'El nombre es requerido',
+            'precio.required'=>'El precio es requerido',
+            'categoria.required'=>'La categoria es requerido',
+            'costo.required'=>'El costo es requerido',
+            'stock.required'=>'El stock es requerido',
+            'inv_min.required'=>'El inventario minimo es requerido'
         ]);
+
+        $this->emit('mostrar-alerta','Hello');
 
         if ($this->imagen) {
             //Validar la imagen
@@ -227,4 +250,5 @@ class Productos extends Component
 
         $producto->delete();
     }
+
 }
